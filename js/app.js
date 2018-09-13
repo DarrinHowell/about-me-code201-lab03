@@ -43,6 +43,16 @@ var question5_AlertIfCorrect = 'Yep, you were right! The Red Rising book series,
 var question5_AlertIfWrong = 'Sorry, unfortunately that\'s the wrong answer. Pierce Brown is the'
                         + ' author of Darrin\'s favorite book series, Red Rising.';
 
+// Question 6, guessing a number
+var question6 = visitorsName + ', how many years has Darrin worked in neuroscience labs'
+                            + ' at UW, both as an undergrad and professionally?';
+var question6_AlertIfCorrect = 'Nice work, you got it: Darrin spent 8 years working'
+                            + ' working in the lab at UW';
+var question6_AlertIfTooHigh = 'Ha, wrong! Not that many years.';
+var question6_AlertIfTooLow = 'Nope, Darrin\'s nerdier than you think. He spent more'
+                            + ' time in the lab than that.';
+
+var q6Answer = 8;
 
 /////////////////////
 
@@ -102,3 +112,22 @@ if(q5_UserInputNormalized === 'y' || q5_UserInputNormalized === 'yes') {
   alert(question5_AlertIfWrong);
 }
 console.log(name + ' answered ' + question5_UserInput + ' to question5_UserInput Question');
+
+// question6, numerical guess
+var question6_UserInput = prompt(question6);
+var q6InputToInteger = parseInt(question6_UserInput);
+var maxGuesses = 4;
+var numGuesses = 0;
+while(numGuesses < maxGuesses){
+  if(q6InputToInteger === q6Answer) {
+    alert(question6_AlertIfCorrect);
+    break;
+  } else if (q6InputToInteger > q6Answer){
+    alert(question6_AlertIfTooHigh);
+    numGuesses++;
+  } else { // it will be less than the actual answer
+    alert(question6_AlertIfTooLow);
+    numGuesses++;
+  }
+
+}
