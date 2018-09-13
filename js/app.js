@@ -167,17 +167,22 @@ var question7_Input = prompt(question7);
 var q7InputNormalized = question7_Input.toLocaleLowerCase();
 var q7Guesses = 0;
 hobbyLoop : while(q7Guesses < 6){
+
   for(var i = 0; i < hobbiesArray.length; i++){
     var hobby = hobbiesArray[i];
+
     if(hobby === q7InputNormalized){
       alert(question7_AlertIfCorrect);
+      correctAnswers++;
       console.log('it ran the if');
       break hobbyLoop;
     } else if (i === hobbiesArray.length){
       alert(question7_AlertIfWrong);
     }
-    q7Guesses++;
+
   }
+  q7Guesses++;
+
   if(q7Guesses === 6){
     alert(question7_AlertIfOutOfGuesses);
   }
