@@ -12,6 +12,7 @@ console.log(visitorsName + ' is the user\'s name');
 
 //Question & Answer Variable Declarations
 
+/*
 // Question 1, plus feedback for correct and incorrect answers
 var question1 = visitorsName + ', does Darrin think that Steph Curry is the best player in the NBA?';
 var question1_AlertIfCorrect = 'Got \'em! Yup, no one else can make it splash like Steph.';
@@ -42,6 +43,7 @@ var question5_AlertIfCorrect = 'Yep, you were right! The Red Rising book series,
                         + ' authored by Pierce Brown, takes the cake for Darrin.';
 var question5_AlertIfWrong = 'Sorry, unfortunately that\'s the wrong answer. Pierce Brown is the'
                         + ' author of Darrin\'s favorite book series, Red Rising.';
+*/
 
 // Question 6, guessing a number
 var question6 = visitorsName + ', how many years has Darrin worked in neuroscience labs'
@@ -53,12 +55,15 @@ var question6_AlertIfTooLow = 'Nope, Darrin\'s nerdier than you think. He spent 
                             + ' time in the lab than that.';
 
 var q6Answer = 8;
+var question6_AlertIfOutOfGuesses = 'Ah, sorry, you\'re out of guesses. He worked'
+                                    + ' there for 8 years.';
 
 /////////////////////
 
 
 // Variable Calls + decision trees + console messages
 
+/*
 // question1
 var question1_UserInput = prompt(question1);
 var q1_UserInputNormalized = question1_UserInput.toLowerCase();
@@ -112,22 +117,37 @@ if(q5_UserInputNormalized === 'y' || q5_UserInputNormalized === 'yes') {
   alert(question5_AlertIfWrong);
 }
 console.log(name + ' answered ' + question5_UserInput + ' to question5_UserInput Question');
+*/
 
-// question6, numerical guess
-var question6_UserInput = prompt(question6);
-var q6InputToInteger = parseInt(question6_UserInput);
+// question6, numerical guess + if else tree
 var maxGuesses = 4;
 var numGuesses = 0;
 while(numGuesses < maxGuesses){
+  var question6_UserInput = prompt(question6);
+  var q6InputToInteger = parseInt(question6_UserInput);
+
   if(q6InputToInteger === q6Answer) {
     alert(question6_AlertIfCorrect);
+    console.log(name + ' guessed ' + question6_UserInput);
+    console.log(name + ' guessed ' + numGuesses + ' time(s) and got it correct.');
     break;
+
   } else if (q6InputToInteger > q6Answer){
     alert(question6_AlertIfTooHigh);
-    numGuesses++;
+
   } else { // it will be less than the actual answer
     alert(question6_AlertIfTooLow);
-    numGuesses++;
   }
 
+  numGuesses++;
+
+  if(numGuesses === maxGuesses){
+    alert(question6_AlertIfOutOfGuesses);
+  }
+
+  console.log(name + ' guessed ' + question6_UserInput);
+  console.log(name + ' guessed ' + numGuesses + ' time(s)');
+
 }
+
+
