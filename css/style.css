@@ -16,6 +16,11 @@ h1 {
     font-weight: bold;
 }
 
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 main {
     margin: 25px;
 }
@@ -27,6 +32,11 @@ footer {
 
 ul {
     list-style-type:  square;
+}
+
+ol {
+    counter-increment: section;
+
 }
 
 
