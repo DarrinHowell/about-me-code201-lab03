@@ -162,7 +162,7 @@ while(numGuesses < maxGuesses){
 }
 
 // question 7
-var hobbiesArray = ['snowboarding', 'flag football', 'reading', 'rapping', 'playing piano', 'writing spoken word'];
+var hobbiesArray = ['snowboard', 'flag football', 'read', 'rap', 'play piano', 'write spoken word'];
 var q7Guesses = 0;
 hobbyLoop : while(q7Guesses < 6){
   var question7_Input = prompt(question7);
