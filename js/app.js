@@ -62,6 +62,8 @@ var question6_AlertIfOutOfGuesses = 'Ah, sorry, you\'re out of guesses. He worke
 var question7 = 'What does Darrin like to do for fun?';
 var question7_AlertIfCorrect = 'Nice, Darrin likes to do that!';
 var question7_AlertIfWrong = 'Sorry, Darrin has better things to do with the nonexistent free time that he has.';
+var question7_AlertIfOutOfGuesses = 'Ah, sorry, you\'re out of guesses. I guess you don\'t know him like that.';
+
 
 /////////////////////
 
@@ -162,11 +164,12 @@ while(numGuesses < maxGuesses){
 // question 7, array values
 var hobbiesArray = ['snowboarding', 'flag football', 'reading', 'rapping', 'playing piano', 'writing spoken word'];
 var question7_Input = prompt(question7);
+var q7InputNormalized = question7_Input.toLocaleLowerCase();
 var q7Guesses = 0;
 hobbyLoop : while(q7Guesses < 6){
   for(var i = 0; i < hobbiesArray.length; i++){
     var hobby = hobbiesArray[i];
-    if(hobby === question7_Input){
+    if(hobby === q7InputNormalized){
       alert(question7_AlertIfCorrect);
       console.log('it ran the if');
       break hobbyLoop;
@@ -175,8 +178,10 @@ hobbyLoop : while(q7Guesses < 6){
     }
     q7Guesses++;
   }
+  if(q7Guesses === 6){
+    alert(question7_AlertIfOutOfGuesses);
+  }
 }
-
 
 
 // grand total alert
