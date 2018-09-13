@@ -116,6 +116,10 @@ var wrongAlertArray = [
   question7_AlertIfWrong
 ];
 
+
+/////////////////////
+
+
 // function that runs true false game
 function trueFalseGame(player, question, correctAnswerShort, correctAnswerLong, promptIfCorrect, promptIfWrong) {
   var question1_UserInput = prompt(question);
@@ -202,7 +206,8 @@ function guessHobbyQuestion(player, question, promptIfCorrect, promptOutOfGuesse
 
 
 
-// Loop through the game
+// Loop through the game, iterating five times through true/false game
+// and once through the other two questions
 for(var i = 0; i < questionArray.length; i++){
   if(i < 5){
     trueFalseGame(visitorsName, questionArray[i], correctGuessShortArray[i], correctGuessLongArray[i], correctAlertArray[i], wrongAlertArray[i]);
@@ -230,3 +235,5 @@ if(correctAnswers === 8){
 } else {
   alert(finalScoreLow);
 }
+
+// game over!
