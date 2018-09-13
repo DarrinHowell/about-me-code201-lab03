@@ -67,130 +67,155 @@ var question7_AlertIfOutOfGuesses = 'Ah, sorry, you\'re out of guesses. I guess 
 
 /////////////////////
 
+// Array generation
+var questionArray = [
+  question1,
+  question2,
+  question3,
+  question4,
+  question5,
+  question6,
+  question7
+];
 
-// Variable Calls + decision trees + console messages
-// question1
-var question1_UserInput = prompt(question1);
-var q1_UserInputNormalized = question1_UserInput.toLowerCase();
-if(q1_UserInputNormalized === 'y' || q1_UserInputNormalized === 'yes' ) {
-  alert(question1_AlertIfCorrect);
-  correctAnswers++;
-} else {
-  alert(question1_AlertIfWrong);
-}
-console.log(name + ' answered ' + question1_UserInput+ ' to question1');
+var correctGuessShortArray = [
+  'y',
+  'n',
+  'n',
+  'n',
+  'y',
+];
 
-
-// question2
-var question2_UserInput = prompt(question2);
-var q2_UserInputNormalized = question2_UserInput.toLowerCase();
-if(q2_UserInputNormalized === 'n' || q2_UserInputNormalized === 'no') {
-  alert(question2_AlertIfCorrect);
-  correctAnswers++;
-} else {
-  alert(question2_AlertIfWrong);
-}
-console.log(name + ' answered ' + question2_UserInput + ' to question2_UserInput Question');
-
-
-// question3
-var question3_UserInput = prompt(question3);
-var q3_UserInputNormalized = question3_UserInput.toLocaleLowerCase();
-if(q3_UserInputNormalized === 'n' || q3_UserInputNormalized === 'no') {
-  alert(question3_AlertIfCorrect);
-  correctAnswers++;
-} else {
-  alert(question3_AlertIfWrong);
-}
-console.log(name + ' answered ' + question3_UserInput + ' to question3_UserInput Question');
+var correctGuessLongArray = [
+  'yes',
+  'no',
+  'no',
+  'no',
+  'y',
+];
 
 
-// question4
-var question4_UserInput = prompt(question4);
-var q4_UserInputNormalized = question4_UserInput.toLowerCase();
-if(q4_UserInputNormalized === 'n' || q4_UserInputNormalized === 'no') {
-  alert(question4_AlertIfCorrect);
-  correctAnswers++;
-} else {
-  alert(question4_AlertIfWrong);
-}
-console.log(name + ' answered ' + question4_UserInput + ' to question4_UserInput Question');
 
+var correctAlertArray = [
+  question1_AlertIfCorrect,
+  question2_AlertIfCorrect,
+  question3_AlertIfCorrect,
+  question4_AlertIfCorrect,
+  question5_AlertIfCorrect,
+  question6_AlertIfCorrect,
+  question7_AlertIfCorrect
+];
 
-// question5
-var question5_UserInput = prompt(question5);
-var q5_UserInputNormalized = question5_UserInput.toLowerCase();
-if(q5_UserInputNormalized === 'y' || q5_UserInputNormalized === 'yes') {
-  alert(question5_AlertIfCorrect);
-  correctAnswers++;
-} else {
-  alert(question5_AlertIfWrong);
-}
-console.log(name + ' answered ' + question5_UserInput + ' to question5_UserInput Question');
+var wrongAlertArray = [
+  question1_AlertIfWrong,
+  question2_AlertIfWrong,
+  question3_AlertIfWrong,
+  question4_AlertIfWrong,
+  question5_AlertIfWrong,
+  '',
+  question7_AlertIfWrong
+];
 
-
-// question6, numerical guess + if else tree
-var maxGuesses = 4;
-var numGuesses = 0;
-while(numGuesses < maxGuesses){
-  var question6_UserInput = prompt(question6);
-  var q6InputToInteger = parseInt(question6_UserInput);
-
-  if(q6InputToInteger === q6Answer) {
-    alert(question6_AlertIfCorrect);
-    console.log(name + ' guessed ' + question6_UserInput);
-    console.log(name + ' guessed ' + numGuesses + ' time(s) and got it correct.');
+// function that runs true false game
+function trueFalseGame(player, question, correctAnswerShort, correctAnswerLong, promptIfCorrect, promptIfWrong) {
+  var question1_UserInput = prompt(question);
+  var q1_UserInputNormalized = question1_UserInput.toLowerCase();
+  if(q1_UserInputNormalized === correctAnswerShort || q1_UserInputNormalized === correctAnswerLong ) {
+    alert(promptIfCorrect);
     correctAnswers++;
-    break;
-
-  } else if (q6InputToInteger > q6Answer){
-    alert(question6_AlertIfTooHigh);
-
-  } else { // it will be less than the actual answer
-    alert(question6_AlertIfTooLow);
+  } else {
+    alert(promptIfWrong);
   }
-
-  numGuesses++;
-
-  if(numGuesses === maxGuesses){
-    alert(question6_AlertIfOutOfGuesses);
-  }
-
-  console.log(name + ' guessed ' + question6_UserInput);
-  console.log(name + ' guessed ' + numGuesses + ' time(s)');
+  console.log(player + ' answered ' + question1_UserInput+ ' to question1');
 
 }
 
-// question 7
-var hobbiesArray = ['snowboard', 'flag football', 'read', 'rap', 'play piano', 'write spoken word'];
-var q7Guesses = 0;
-hobbyLoop : while(q7Guesses < 6){
-  var question7_Input = prompt(question7);
-  var q7InputNormalized = question7_Input.toLocaleLowerCase();
+// function that runs number guessing game (question 6)
+function guessNumberQuestion(player, question, correctNumber, promptIfCorrect, promptTooHigh, promptTooLow, promptOutOfGuesses){
+  var maxGuesses = 4;
+  var numGuesses = 0;
+  while(numGuesses < maxGuesses){
+    var question6_UserInput = prompt(question);
+    var q6InputToInteger = parseInt(question6_UserInput);
 
-  for(var i = 0; i < hobbiesArray.length; i++){
-    var hobby = hobbiesArray[i];
-    console.log('We ran through the loop ' + i + ' times.');
-
-    if(hobby === q7InputNormalized){
-      alert(question7_AlertIfCorrect);
+    if(q6InputToInteger === correctNumber) {
+      alert(promptIfCorrect);
+      console.log(player + ' guessed ' + question6_UserInput);
+      console.log(player + ' guessed ' + numGuesses + ' time(s) and got it correct.');
       correctAnswers++;
-      console.log('guessed ' + q7InputNormalized + ' correctly');
-      break hobbyLoop;
+      break;
 
-    } else if (i === hobbiesArray.length-1){
-      alert(question7_AlertIfWrong);
-      console.log('i = ' + i);
+    } else if (q6InputToInteger > q6Answer){
+      alert(promptTooHigh);
+
+    } else { // it will be less than the actual answer
+      alert(promptTooLow);
     }
 
-  }
-  q7Guesses++;
-  console.log('number of guesses =' + q7Guesses);
+    numGuesses++;
 
-  if(q7Guesses === 6){
-    alert(question7_AlertIfOutOfGuesses);
+    if(numGuesses === maxGuesses){
+      alert(promptOutOfGuesses);
+    }
+
+    console.log(player + ' guessed ' + question6_UserInput);
+    console.log(player + ' guessed ' + numGuesses + ' time(s)');
+
   }
 }
+
+// function used to guess my favorite hobbies
+function guessHobbyQuestion(player, question, promptIfCorrect, promptOutOfGuesses){
+  var hobbiesArray = ['snowboard', 'flag football', 'read', 'rap', 'play piano', 'write spoken word'];
+  var q7Guesses = 0;
+  hobbyLoop : while(q7Guesses < 6){
+    var question7_Input = prompt(question);
+    var q7InputNormalized = question7_Input.toLocaleLowerCase();
+
+    for(var i = 0; i < hobbiesArray.length; i++){
+      var hobby = hobbiesArray[i];
+      console.log('We ran through the loop ' + i + ' times.');
+
+      if(hobby === q7InputNormalized){
+        alert(promptIfCorrect);
+        correctAnswers++;
+        console.log(player +' guessed ' + q7InputNormalized + ' correctly');
+        break hobbyLoop;
+
+      } else if (i === hobbiesArray.length-1){
+        alert(question7_AlertIfWrong);
+        console.log('i = ' + i);
+      }
+
+    }
+    q7Guesses++;
+    console.log('number of guesses =' + q7Guesses);
+
+    if(q7Guesses === 6){
+      alert(promptOutOfGuesses);
+    }
+  }
+}
+
+
+/////////////////////
+
+
+
+// Loop through the game
+for(var i = 0; i < questionArray.length; i++){
+  if(i < 5){
+    trueFalseGame(visitorsName, questionArray[i], correctGuessShortArray[i], correctGuessLongArray[i], correctAlertArray[i], wrongAlertArray[i]);
+  } else if(i < 6){
+    guessNumberQuestion(visitorsName, questionArray[i], q6Answer, correctAlertArray[i], question6_AlertIfTooHigh, question6_AlertIfTooLow, question6_AlertIfOutOfGuesses);
+  } else {
+    guessHobbyQuestion(visitorsName, questionArray[i], correctAlertArray[i], question7_AlertIfOutOfGuesses);
+  }
+}
+
+
+/////////////////////
+
 
 
 // grand total alert
@@ -200,7 +225,7 @@ var finalScoreLow = correctAnswers + ' out of 7. You\'ve got a little bit of wor
 
 if(correctAnswers === 8){
   alert(finalScorePerfect);
-} else if(correctAnswers >= 5){ 
+} else if(correctAnswers >= 5){
   alert(finalScoreHigh);
 } else {
   alert(finalScoreLow);
