@@ -161,27 +161,31 @@ while(numGuesses < maxGuesses){
 
 }
 
-// question 7, array values
+// question 7
 var hobbiesArray = ['snowboarding', 'flag football', 'reading', 'rapping', 'playing piano', 'writing spoken word'];
-var question7_Input = prompt(question7);
-var q7InputNormalized = question7_Input.toLocaleLowerCase();
 var q7Guesses = 0;
 hobbyLoop : while(q7Guesses < 6){
+  var question7_Input = prompt(question7);
+  var q7InputNormalized = question7_Input.toLocaleLowerCase();
 
   for(var i = 0; i < hobbiesArray.length; i++){
     var hobby = hobbiesArray[i];
+    console.log('We ran through the loop ' + i + ' times.');
 
     if(hobby === q7InputNormalized){
       alert(question7_AlertIfCorrect);
       correctAnswers++;
-      console.log('it ran the if');
+      console.log('guessed ' + q7InputNormalized + ' correctly');
       break hobbyLoop;
-    } else if (i === hobbiesArray.length){
+
+    } else if (i === hobbiesArray.length-1){
       alert(question7_AlertIfWrong);
+      console.log('i = ' + i);
     }
 
   }
   q7Guesses++;
+  console.log('number of guesses =' + q7Guesses);
 
   if(q7Guesses === 6){
     alert(question7_AlertIfOutOfGuesses);
@@ -192,7 +196,7 @@ hobbyLoop : while(q7Guesses < 6){
 // grand total alert
 var finalScorePerfect = correctAnswers + ' out of 7. Perfect score! You may know Darrin better than he knows himself';
 var finalScoreHigh = correctAnswers + ' out of 7. Well done. You must have spent some time with D!';
-var finalScoreLow = correctAnswers + ' out of 7. You\'ve got a little bit of work to do. Take him out for a drink and an M\'s game.';
+var finalScoreLow = correctAnswers + ' out of 7. You\'ve got a little bit of work to do. Take him out for a drink and an M\'s game and get to know him!';
 
 if(correctAnswers === 8){
   alert(finalScorePerfect);
