@@ -7,36 +7,13 @@ header {
     background: rgb(99, 209, 243);
     height: 150px;
     line-height: 150px;
-    margin: 10px;
-    width: 100px;
-    padding: 15px;
     text-align: center;
-    
 
 }
-
-/*
-div{
-    margin: 10px;
-    width: 400px;
-    padding: 15px;
-}
-*/
 
 h1 {
     font-size: 24px;
     font-weight: bold;
-    display: inline-block;
-    margin: 10px;
-    width: 400px;
-    padding: 15px;
-}
-
-img {
-    display: inline-block;
-    margin: 10px;
-    width: 400px;
-    padding: 15px;
 }
 
 main {
