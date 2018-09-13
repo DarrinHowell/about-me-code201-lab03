@@ -21,6 +21,10 @@ h2 {
     font-weight: bold;
 }
 
+h3 {
+    font-size: 15px;
+}
+
 main {
     margin: 25px;
 }
@@ -36,9 +40,18 @@ ul {
 
 ol {
     counter-increment: section;
-
+    font-size: 12px;
 }
 
+/*
+.orderedListItem {
+    display: inline-block;
+    margin: 10px;
+    counter-increment: section;
+    padding: 5px;
+
+}
+*/
 
 li {
     margin-left: 10;
