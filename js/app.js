@@ -1,3 +1,4 @@
+'use strict';
 // Javascript file that controls functionality and interactivity of index.html
 // strict comparisons only
 
@@ -13,33 +14,33 @@ console.log(visitorsName + ' is the user\'s name');
 
 // Question 1, plus feedback for correct and incorrect answers
 var question1 = visitorsName + ', does Darrin think that Steph Curry is the best player in the NBA?';
-var favNBAPlayerAlertIfCorrect = 'Got \'em! Yup, no one else can make it splash like Steph.';
-var favNBAPLayerAlertIfWrong = 'Ah, sorry. It looks like you don\'t know Darrin as well as you thought.'
+var question1_AlertIfCorrect = 'Got \'em! Yup, no one else can make it splash like Steph.';
+var question1_AlertIfWrong = 'Ah, sorry. It looks like you don\'t know Darrin as well as you thought.'
                                 + 'He loves Steph.';
 
 // Question 2, plus feedback for correct and incorrect answers
 var question2 = visitorsName + ', does Darrin enjoy Filipino food more than any other?';
-var favFoodTypeIfCorrect = 'You were right; although he has Filipino ancestry, his favorite'
+var question2_AlertIfCorrect = 'You were right; although he has Filipino ancestry, his favorite'
                             + ' type of food is Japanese food.';
-var favFoodTypeIfWrong = 'Ah, bummer. Although Darrin is part Filipino, Filipino food'
+var question2_AlertIfWrong = 'Ah, bummer. Although Darrin is part Filipino, Filipino food'
                             + ' is not his number one. Japanese takes the top spot.';
 
 // Question 3, plus feedback for correct and incorrect answers
 var question3 = visitorsName + ', is Barcelona Darrin\'s favorite city?';
-var favCityIfCorrect = 'You were right! Barcelona is not his favorite city. PNW all the way.';
-var favCityIfWrong = 'Sorry! Barcelona is a great city, but Seattle has his heart.';
+var question3_AlertIfCorrect = 'You were right! Barcelona is not his favorite city. PNW all the way.';
+var question3_AlertIfWrong = 'Sorry! Barcelona is a great city, but Seattle has his heart.';
 
 // Question 4, plus feedback for correct and incorrect answers
 var question4 = visitorsName + ', is Kendrick Darrin\'s favorite hip-hop artist?';
-var favHipHopIfCorrect = 'Yep, you were right: Darrin likes Lecrae most, not Kendrick.';
-var favHipHopIfFalse = 'Ah, sorry, it\'s not Kendrick. It\'s Lecrae. Hipster, I know.';
+var question4_AlertIfCorrect = 'Yep, you were right: Darrin likes Lecrae most, not Kendrick.';
+var question4_AlertIfWrong = 'Ah, sorry, it\'s not Kendrick. It\'s Lecrae. Hipster, I know.';
 
 
 // Question 5, plus feedback for correct and incorrect answers
 var question5 = visitorsName + ', is Pierce Brown Darrin\'s favorite author?';
-var favAuthorIfCorrect = 'Yep, you were right! The Red Rising book series,'
+var question5_AlertIfCorrect = 'Yep, you were right! The Red Rising book series,'
                         + ' authored by Pierce Brown, takes the cake for Darrin.';
-var favAuthorIfWrong = 'Sorry, unfortunately that\'s the wrong answer. Pierce Brown is the'
+var question5_AlertIfWrong = 'Sorry, unfortunately that\'s the wrong answer. Pierce Brown is the'
                         + ' author of Darrin\'s favorite book series, Red Rising.';
 
 
@@ -48,51 +49,56 @@ var favAuthorIfWrong = 'Sorry, unfortunately that\'s the wrong answer. Pierce Br
 
 // Variable Calls + decision trees + console messages
 
-// NBA question
-var favNBAPlayer = prompt(question1);
-if(favNBAPlayer.toLowerCase() === 'y' || favNBAPlayer.toLowerCase() === 'yes' ) {
-  alert(favNBAPlayerAlertIfCorrect);
+// question1
+var question1_UserInput = prompt(question1);
+var q1_UserInputNormalized = question1_UserInput.toLowerCase();
+if(q1_UserInputNormalized === 'y' || q1_UserInputNormalized === 'yes' ) {
+  alert(question1_AlertIfCorrect);
 } else {
-  alert(favNBAPLayerAlertIfWrong);
+  alert(question1_AlertIfWrong);
 }
-console.log(name + ' answered ' + favNBAPlayer+ ' to favNBAPlayer Question');
+console.log(name + ' answered ' + question1_UserInput+ ' to question1');
 
 
-// food question
-var favFood = prompt(question2);
-if(favFood.toLowerCase() === 'n' || favFood.toLowerCase() === 'no') {
-  alert(favFoodTypeIfCorrect);
+// question2
+var question2_UserInput = prompt(question2);
+var q2_UserInputNormalized = question2_UserInput.toLowerCase();
+if(q2_UserInputNormalized === 'n' || q2_UserInputNormalized === 'no') {
+  alert(question2_AlertIfCorrect);
 } else {
-  alert(favFoodTypeIfWrong);
+  alert(question2_AlertIfWrong);
 }
-console.log(name + ' answered ' + favFood + ' to favFood Question');
+console.log(name + ' answered ' + question2_UserInput + ' to question2_UserInput Question');
 
 
-// city question
-var favCity = prompt(question3);
-if(favCity.toLowerCase() === 'n' || favCity.toLowerCase() === 'no') {
-  alert(favCityIfCorrect);
+// question3
+var question3_UserInput = prompt(question3);
+var q3_UserInputNormalized = question3_UserInput.toLocaleLowerCase();
+if(q3_UserInputNormalized === 'n' || q3_UserInputNormalized === 'no') {
+  alert(question3_AlertIfCorrect);
 } else {
-  alert(favCityIfWrong);
+  alert(question3_AlertIfWrong);
 }
-console.log(name + ' answered ' + favCity + ' to favCity Question');
+console.log(name + ' answered ' + question3_UserInput + ' to question3_UserInput Question');
 
 
-// hip-hop question
-var favHipHop = prompt(question4);
-if(favHipHop.toLowerCase() === 'n' || favHipHop.toLowerCase() === 'no') {
-  alert(favHipHopIfCorrect);
+// question4
+var question4_UserInput = prompt(question4);
+var q4_UserInputNormalized = question4_UserInput.toLowerCase();
+if(q4_UserInputNormalized === 'n' || q4_UserInputNormalized === 'no') {
+  alert(question4_AlertIfCorrect);
 } else {
-  alert(favHipHopIfFalse);
+  alert(question4_AlertIfWrong);
 }
-console.log(name + ' answered ' + favHipHop + ' to favHipHop Question');
+console.log(name + ' answered ' + question4_UserInput + ' to question4_UserInput Question');
 
 
-// author question
-var favAuthor = prompt(question5);
-if(favAuthor.toLowerCase() === 'y' || favAuthor.toLowerCase() === 'yes') {
-  alert(favAuthorIfCorrect);
+// question5
+var question5_UserInput = prompt(question5);
+var q5_UserInputNormalized = question5_UserInput.toLowerCase();
+if(q5_UserInputNormalized === 'y' || q5_UserInputNormalized === 'yes') {
+  alert(question5_AlertIfCorrect);
 } else {
-  alert(favAuthorIfWrong);
+  alert(question5_AlertIfWrong);
 }
-console.log(name + ' answered ' + favAuthor + ' to favAuthor Question');
+console.log(name + ' answered ' + question5_UserInput + ' to question5_UserInput Question');
