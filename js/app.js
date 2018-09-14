@@ -143,6 +143,7 @@ var wrongAlertArray = [
 /////////////////////
 
 
+
 // function that runs true false game
 function trueFalseGame(player, question, correctAnswerShort, correctAnswerLong, promptIfCorrect, promptIfWrong, incorrectAnswerLong, incorrectAnswerShort) {
   var userInput = prompt(question);
