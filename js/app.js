@@ -70,6 +70,7 @@ var question7_AlertIfOutOfGuesses = 'Ah, sorry, you\'re out of guesses. I guess 
 var promptIfIrrelevantInput = 'You either didn\'t guess, or your input doesn\'t fit the question. Please answer Y/Yes or N/No on the next question. ';
 var promptIfIrrelevantInput_Q6 = 'You either didn\'t guess or you didn\'t guess a number. We\'ll still have to burn one of your guesses. Please guess a number.';
 
+
 /////////////////////
 
 
@@ -229,6 +230,7 @@ function guessHobbyQuestion(player, question, promptIfCorrect, promptOutOfGuesse
 }
 
 
+
 /////////////////////
 
 
@@ -250,6 +252,7 @@ for(i; i < questionArray.length; i++){
 /////////////////////
 
 
+
 // grand total alert
 var finalScorePerfect = correctAnswers + ' out of 7. Perfect score! You may know Darrin better than he knows himself';
 var finalScoreHigh = correctAnswers + ' out of 7. Well done. You must have spent some time with D!';
@@ -263,4 +266,4 @@ if(correctAnswers === 7){
   alert(finalScoreLow);
 }
 
-// game over!
+// game over!!
