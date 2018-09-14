@@ -8,6 +8,7 @@ console.log(visitorsName + ' is the user\'s name');
 
 var correctAnswers = 0;
 
+
 /////////////////////
 
 
@@ -16,7 +17,7 @@ var correctAnswers = 0;
 var question1 = visitorsName + ', does Darrin think that Steph Curry is the best player in the NBA?';
 var question1_AlertIfCorrect = 'Got \'em! Yup, no one else can make it splash like Steph.';
 var question1_AlertIfWrong = 'Ah, sorry. It looks like you don\'t know Darrin as well as you thought.'
-                                + 'He loves Steph.';
+                                + ' He loves Steph.';
 
 // Question 2, plus feedback for correct and incorrect answers
 var question2 = visitorsName + ', does Darrin enjoy Filipino food more than any other?';
@@ -61,11 +62,17 @@ var question6_AlertIfOutOfGuesses = 'Ah, sorry, you\'re out of guesses. He worke
 
 var question7 = 'What does Darrin like to do for fun?';
 var question7_AlertIfCorrect = 'Nice, Darrin likes to do that!';
-var question7_AlertIfWrong = 'Sorry, Darrin has better things to do with the nonexistent free time that he has.';
+var question7_AlertIfWrong = 'Sorry, incorrect! Please make a(nother) guess.';
 var question7_AlertIfOutOfGuesses = 'Ah, sorry, you\'re out of guesses. I guess you don\'t know him like that.';
 
 
+
+var promptIfIrrelevantInput = 'You either didn\'t guess, or your input doesn\'t fit the question. Please answer Y/Yes or N/No on the next question. ';
+var promptIfIrrelevantInput_Q6 = 'You either didn\'t guess or you didn\'t guess a number. We\'ll still have to burn one of your guesses. Please guess a number.';
+
+
 /////////////////////
+
 
 // Array generation
 var questionArray = [
@@ -91,9 +98,24 @@ var correctGuessLongArray = [
   'no',
   'no',
   'no',
-  'y',
+  'yes',
 ];
 
+var incorrectAnswerShortArray = [
+  'n',
+  'y',
+  'y',
+  'y',
+  'n'
+];
+
+var incorrectAnswerLongArray = [
+  'no',
+  'yes',
+  'yes',
+  'yes',
+  'no'
+];
 
 
 var correctAlertArray = [
@@ -117,20 +139,25 @@ var wrongAlertArray = [
 ];
 
 
+
 /////////////////////
 
 
+
 // function that runs true false game
-function trueFalseGame(player, question, correctAnswerShort, correctAnswerLong, promptIfCorrect, promptIfWrong) {
-  var question1_UserInput = prompt(question);
-  var q1_UserInputNormalized = question1_UserInput.toLowerCase();
-  if(q1_UserInputNormalized === correctAnswerShort || q1_UserInputNormalized === correctAnswerLong ) {
+function trueFalseGame(player, question, correctAnswerShort, correctAnswerLong, promptIfCorrect, promptIfWrong, incorrectAnswerLong, incorrectAnswerShort) {
+  var userInput = prompt(question);
+  var normalizedInput = userInput.toLowerCase();
+
+  if(normalizedInput === correctAnswerShort || normalizedInput === correctAnswerLong ) {
     alert(promptIfCorrect);
     correctAnswers++;
-  } else {
+  } else if(normalizedInput === incorrectAnswerShort || normalizedInput === incorrectAnswerLong) {
     alert(promptIfWrong);
+  } else {
+    alert(promptIfIrrelevantInput);
   }
-  console.log(player + ' answered ' + question1_UserInput+ ' to question1');
+  console.log(player + ' answered ' + userInput+ ' to question', i);
 
 }
 
@@ -152,8 +179,10 @@ function guessNumberQuestion(player, question, correctNumber, promptIfCorrect, p
     } else if (q6InputToInteger > q6Answer){
       alert(promptTooHigh);
 
-    } else { // it will be less than the actual answer
+    } else if (q6InputToInteger < q6Answer){ 
       alert(promptTooLow);
+    } else { // covers null and or string case
+      alert(promptIfIrrelevantInput_Q6);
     }
 
     numGuesses++;
@@ -202,15 +231,17 @@ function guessHobbyQuestion(player, question, promptIfCorrect, promptOutOfGuesse
 }
 
 
+
 /////////////////////
 
 
 
 // Loop through the game, iterating five times through true/false game
 // and once through the other two questions
-for(var i = 0; i < questionArray.length; i++){
+var i = 0;
+for(i; i < questionArray.length; i++){
   if(i < 5){
-    trueFalseGame(visitorsName, questionArray[i], correctGuessShortArray[i], correctGuessLongArray[i], correctAlertArray[i], wrongAlertArray[i]);
+    trueFalseGame(visitorsName, questionArray[i], correctGuessShortArray[i], correctGuessLongArray[i], correctAlertArray[i], wrongAlertArray[i], incorrectAnswerLongArray[i], incorrectAnswerShortArray[i]);
   } else if(i < 6){
     guessNumberQuestion(visitorsName, questionArray[i], q6Answer, correctAlertArray[i], question6_AlertIfTooHigh, question6_AlertIfTooLow, question6_AlertIfOutOfGuesses);
   } else {
@@ -228,7 +259,7 @@ var finalScorePerfect = correctAnswers + ' out of 7. Perfect score! You may know
 var finalScoreHigh = correctAnswers + ' out of 7. Well done. You must have spent some time with D!';
 var finalScoreLow = correctAnswers + ' out of 7. You\'ve got a little bit of work to do. Take him out for a drink and an M\'s game and get to know him!';
 
-if(correctAnswers === 8){
+if(correctAnswers === 7){
   alert(finalScorePerfect);
 } else if(correctAnswers >= 5){
   alert(finalScoreHigh);
@@ -236,4 +267,4 @@ if(correctAnswers === 8){
   alert(finalScoreLow);
 }
 
-// game over!
+// game over!!
