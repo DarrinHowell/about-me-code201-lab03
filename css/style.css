@@ -1,3 +1,15 @@
+//picture and title put top
+// the rest of the contanet we follow box model.
+// we will make 3 decks.
+//the first deck will be title on my profile picture.
+//seconde deck will be my 7Q from game and img of one of those quations  
+//the last deck will have img on left hand side and top 10 list on the right
+
+
+
+
+
+
 body {
     background: gray;
     font-family: Verdana, Geneva, Tahoma, sans-serif
