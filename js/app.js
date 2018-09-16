@@ -199,7 +199,7 @@ function guessNumberQuestion(player, question, correctNumber, promptIfCorrect, p
 
 // function used to guess my favorite hobbies
 function guessHobbyQuestion(player, question, promptIfCorrect, promptOutOfGuesses){
-  var hobbiesArray = ['snowboard', 'flag football', 'read', 'rap', 'play piano', 'write spoken word'];
+  var hobbiesArray = ['snowboard', 'flag football', 'read', 'rap', 'play piano', 'write spoken word', 'dance', 'lift'];
   var q7Guesses = 0;
   hobbyLoop : while(q7Guesses < 6){
     var question7_Input = prompt(question);
